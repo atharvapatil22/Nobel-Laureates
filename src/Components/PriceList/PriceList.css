@@ -1,0 +1,45 @@
+.listContainer {
+  /* margin: 20px 50px;
+  flex: 1;
+  overflow-y: scroll;
+  max-height: 500px;
+  background-color: antiquewhite; */
+}
+
+.listHeader {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+}
+
+.listBody {
+  margin: 0px 50px;
+  /* color: red; */
+  flex: 1;
+  overflow-y: scroll;
+  max-height: 450px;
+  background-color: antiquewhite;
+}
+
+.listItem {
+  background-color: pink;
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+  border-radius: 8px;
+  margin: 10px;
+  padding: 0;
+}
+
+.row1,
+.row2,
+.row3 {
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.row3 {
+  width: 50%;
+}
