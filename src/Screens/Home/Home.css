@@ -1,0 +1,9 @@
+.categoryDropdown {
+  min-width: 250px;
+  max-width: 30vw;
+}
+
+.filters {
+  background-color: rgb(215, 243, 222);
+  margin: 0px 3vw;
+}

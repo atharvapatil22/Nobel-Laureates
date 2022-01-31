@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./PriceList.css";
 
-function PriceList({ prizes }) {
+function PriceList({ filteredList }) {
   const LaureateNames = ({ nameList }) => {
     if (nameList)
       return nameList.map((item) => (
@@ -19,9 +19,9 @@ function PriceList({ prizes }) {
         <p className="row2">
           {item.category.charAt(0).toUpperCase() + item.category.slice(1)}
         </p>
-        <p className="row3">
+        <div className="row3">
           <LaureateNames nameList={item.laureates} />
-        </p>
+        </div>
       </ul>
     );
   };
@@ -34,7 +34,7 @@ function PriceList({ prizes }) {
         <p className="row3">Winners</p>
       </div>
       <div className="listBody">
-        {prizes.map((item, index) => (
+        {filteredList.map((item, index) => (
           <ListItem key={index} item={item} />
         ))}
       </div>
