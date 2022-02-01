@@ -25,7 +25,7 @@ function Home() {
   const fetchData = async () => {
     setShowLoader(true);
     axios
-      .get("http://api.nobelprize.org/v1/prize.json")
+      .get("https://api.nobelprize.org/v1/prize.json")
       .then((response) => {
         setFilteredList(response.data.prizes);
         setPrizesList(response.data.prizes);
