@@ -1,64 +1,95 @@
 .container {
   margin: 0;
-  background-color: #000629;
-  height: 100vh;
+  background-color: #dbdde9;
+  height: 90vh;
+  /* font-size: 1.5em; */
 }
 
 .heading {
   margin: 0%;
-  color: #ffa008;
+  color: rgb(30, 30, 169);
   text-align: center;
   font-size: 4em;
   font-weight: bolder;
+  background-color: #dbdde9;
 }
 .categoryDropdown {
   min-width: 250px;
   max-width: 35vw;
   height: 40px;
+  font-size: 1.5em;
 }
 
 .filters {
-  background-color: #061a8e;
-  margin: 0px 3vw;
+  background-color: white;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  margin: 0vh 3vw;
+  margin-top: 2vh;
   padding: 1vh 3vw;
   border-radius: 8px;
+  /* height: 18vh; */
 }
 
 .filtersTitle {
-  color: #ffa008;
+  color: rgb(30, 30, 169);
   font-weight: 700;
+  font-size: 1.5em;
 }
 
 .btnContainer {
   display: flex;
-  justify-content: flex-end;
-  margin-top: 2vh;
+  justify-content: space-between;
+  margin-top: 4vh;
   margin-bottom: 2vh;
 }
 
 .clearBtn,
 .applyBtn {
-  width: 100px;
-  height: 40px;
+  width: 42vw;
+  height: 50px;
   border-color: transparent;
   border-radius: 5px;
-  margin-left: 3vw;
+  /* margin-left: 3vw; */
+  font-size: 1.4em;
+  /* margin: 1vh 2vw; */
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+.clearBtn {
+  background: rgb(228, 228, 228);
+  background: linear-gradient(
+    0deg,
+    rgba(228, 228, 228, 1) 0%,
+    rgba(227, 226, 226, 1) 47%,
+    rgba(249, 249, 249, 1) 100%
+  );
 }
 
 .applyBtn {
-  background-color: #ffa008;
+  background-color: rgb(30, 30, 169);
+  background: rgb(10, 41, 165);
+  background: linear-gradient(
+    0deg,
+    rgba(10, 41, 165, 1) 0%,
+    rgba(20, 55, 193, 1) 47%,
+    rgba(73, 104, 223, 1) 100%
+  );
+  color: white;
 }
 
-.year-filter-dropdown {
+.yearFilterDropdown {
   margin: 0px 3vw;
-  border-color: transparent;
-  border-radius: 8px;
+  border-color: rgb(201, 201, 201);
+  border-radius: 4px;
   /* min-width: 125px; */
-  width: 10vw;
-  height: 40px;
+  width: 12vw;
+  height: 6vh;
+  text-align: center;
+  font-size: 1.5em;
+  /* height: 40px; */
 }
 
-.year-filter-container {
+.yearFilterContainer {
   display: flex;
   flex-direction: row;
   height: 40px;

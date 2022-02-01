@@ -61,7 +61,6 @@ function Home() {
       if (item.year >= fromYearFilter && item.year < toYearFilter) return true;
       else return false;
     });
-    // console.log(filteredByYear);
     setFilteredList(filteredByYear);
 
     //  Filter by category
@@ -91,16 +90,16 @@ function Home() {
         <p className="filtersTitle">Category</p>
         <Multiselect
           className="categoryDropdown"
-          showCheckbox
+          // showCheckbox
           options={categoryOptions}
           selectedValues={selectedCategories}
           onSelect={(selectedList) => setSelectedCategories(selectedList)}
           onRemove={(selectedList) => setSelectedCategories(selectedList)}
           displayValue="name"
+          S
           placeholder={
             selectedCategories.length === 0 ? "Select Category" : null
           }
-          // customCloseIcon={"s"}
         />
       </div>
     );
@@ -116,11 +115,19 @@ function Home() {
     return (
       <div>
         <p className="filtersTitle">Year</p>
-        <div className="year-filter-container">
-          <p style={{ color: "#ffa008", alignSelf: "center" }}>From</p>
+        <div className="yearFilterContainer">
+          <p
+            style={{
+              color: "rgb(30, 30, 169)",
+              alignSelf: "center",
+              fontSize: "1.5em",
+            }}
+          >
+            From
+          </p>
           <select
             ref={fromYearRef}
-            className="year-filter-dropdown"
+            className="yearFilterDropdown"
             name="from_year"
             id="from_year"
             value={fromYearFilter}
@@ -132,11 +139,19 @@ function Home() {
               </option>
             ))}
           </select>
-          <p style={{ color: "#ffa008", alignSelf: "center" }}>To</p>
+          <p
+            style={{
+              color: "rgb(30, 30, 169)",
+              alignSelf: "center",
+              fontSize: "1.5em",
+            }}
+          >
+            To
+          </p>
           <select
             ref={toYearRef}
             value={toYearFilter}
-            className="year-filter-dropdown"
+            className="yearFilterDropdown"
             name="to_year"
             id="to_year"
             onChange={() => setToYearFilter(toYearRef.current.value)}
@@ -154,14 +169,13 @@ function Home() {
 
   return (
     <div className="container">
-      <p className="heading">List of Nobel Laureates</p>
+      {/* <p className="heading">List of Nobel Laureates</p> */}
 
       <div className="filters">
         <div style={{ display: "flex", flexDirection: "row" }}>
           <CategoryFilter />
           <YearFilter />
         </div>
-
         <div className="btnContainer">
           <button className="clearBtn" onClick={clearFilters}>
             Clear All
@@ -171,6 +185,7 @@ function Home() {
           </button>
         </div>
       </div>
+
       <PriceList filteredList={filteredList} />
     </div>
   );

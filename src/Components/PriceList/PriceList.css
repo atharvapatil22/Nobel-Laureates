@@ -4,35 +4,66 @@
   overflow-y: scroll;
   max-height: 500px; 
   background-color: antiquewhite;*/
-  background-color: #061a8e;
+  background-color: white;
   margin: 2vh 3vw;
   border-radius: 8px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  padding-bottom: 1vh;
 }
 
 .listHeader {
   display: flex;
   flex-direction: row;
-  padding: 10px;
-  color: #ffa008;
+  padding: 0px 0.5vw;
+  color: white;
+  background-color: rgba(30, 30, 169, 0.5);
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 35%,
+    rgba(0, 212, 255, 1) 100%
+  );
   font-weight: 700;
+  font-size: 1.5em;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 
 .listBody {
   /* margin: 0px 3vw; */
   flex: 1;
   overflow-y: scroll;
-  max-height: 50vh;
-  background-color: #061a8e;
+  height: 50vh;
+  background-color: white;
+}
+
+.listBody::-webkit-scrollbar {
+  width: 12px; /* width of the entire scrollbar */
+}
+
+.listBody::-webkit-scrollbar-track {
+  background: rgb(255, 255, 255); /* color of the tracking area */
+}
+
+.listBody::-webkit-scrollbar-thumb {
+  background-color: rgb(220, 220, 220);
+  border-radius: 18px;
+  border: 3px solid rgb(220, 220, 220);
 }
 
 .listItem {
-  background-color: pink;
+  background-color: white;
   display: flex;
   flex-direction: row;
   height: 50px;
-  border-radius: 8px;
+  /* border-radius: 8px; */
   margin: 10px;
   padding: 0;
+  /* box-shadow: 0 3px 10px rgb(0 0 0 / 0.2); */
+
+  border-bottom: 1px solid #000;
+  font-size: 1.5em;
 }
 
 .row1,
@@ -43,7 +74,14 @@
   justify-content: center;
   align-items: center;
 }
+.row1 {
+  width: 15%;
+}
+
+.row2 {
+  width: 20%;
+}
 
 .row3 {
-  width: 50%;
+  width: 65%;
 }
