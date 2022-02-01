@@ -1,0 +1,22 @@
+.infoContainer {
+  background-color: white;
+  /* width: 45vw; */
+  height: 200px;
+  margin: 20px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.awards {
+  display: flex;
+  flex-direction: row;
+}
+
+.award {
+  background-color: rgb(30, 30, 169);
+  margin-right: 2vw;
+  color: white;
+  border-radius: 4px;
+  padding: 0.5vh 0.5vw;
+}

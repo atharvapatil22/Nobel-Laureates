@@ -13,6 +13,8 @@ function Home() {
   const [fromYearFilter, setFromYearFilter] = useState("1900");
   const [toYearFilter, setToYearFilter] = useState("2022");
 
+  const [showLoader, setShowLoader] = useState(false);
+
   const fromYearRef = useRef(null);
   const toYearRef = useRef(null);
 
@@ -21,6 +23,7 @@ function Home() {
   }, []);
 
   const fetchData = async () => {
+    setShowLoader(true);
     axios
       .get("http://api.nobelprize.org/v1/prize.json")
       .then((response) => {
@@ -28,7 +31,8 @@ function Home() {
         setPrizesList(response.data.prizes);
         getCategories(response.data.prizes);
       })
-      .catch((error) => console.log("ERROR OCCURED!! ", error));
+      .catch((error) => console.log("ERROR OCCURED!! ", error))
+      .finally(() => setShowLoader(false));
   };
 
   const getCategories = (prizes) => {
@@ -172,7 +176,13 @@ function Home() {
       {/* <p className="heading">List of Nobel Laureates</p> */}
 
       <div className="filters">
-        <div style={{ display: "flex", flexDirection: "row" }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}
+        >
           <CategoryFilter />
           <YearFilter />
         </div>
@@ -186,7 +196,7 @@ function Home() {
         </div>
       </div>
 
-      <PriceList filteredList={filteredList} />
+      <PriceList filteredList={filteredList} showLoader={showLoader} />
     </div>
   );
 }

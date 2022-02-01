@@ -1,4 +1,27 @@
 .navbarContainer {
   height: 8vh;
   background-color: rgb(30, 30, 169);
+  /* height: 0px; */
+  /* padding: 0 30px; */
+  color: white;
+}
+
+.navBar {
+  height: 8vh;
+  padding: 0 3vw;
+  color: white;
+}
+
+.brandName {
+  font-size: 1.6em;
+  color: rgb(255, 255, 255);
+  padding-top: 1vh;
+  font-weight: 700;
+}
+
+.links {
+  color: rgb(198, 198, 198);
+  padding-top: 1vh;
+  padding-left: 3vw;
+  font-size: 1.6em;
 }

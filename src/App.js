@@ -1,8 +1,11 @@
 import "./App.css";
 import Home from "./Screens/Home/Home";
 import { Routes, Route, Link } from "react-router-dom";
-import About from "./Screens/About/About";
 import MyNavbar from "./Components/MyNavbar/MyNavbar";
+import MultipleWinners from "./Screens/MultipleWinners/MultipleWinners";
+// Dependencies
+import "bootstrap/dist/css/bootstrap.min.css";
+// import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 function App() {
   return (
@@ -10,7 +13,7 @@ function App() {
       <MyNavbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="about" element={<About />} />
+        <Route path="/multiple-winners" element={<MultipleWinners />} />
       </Routes>
     </div>
   );
