@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import "./Home.css";
 import PriceList from "../../Components/PriceList/PriceList";
@@ -10,7 +10,11 @@ function Home() {
   const [categoryOptions, setCategoryOptions] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState([]);
 
-  const [activeFilters, setActiveFilters] = useState({ categoryFilter: null });
+  const [fromYearFilter, setFromYearFilter] = useState("1900");
+  const [toYearFilter, setToYearFilter] = useState("2022");
+
+  const fromYearRef = useRef(null);
+  const toYearRef = useRef(null);
 
   useEffect(() => {
     fetchData();
@@ -47,21 +51,44 @@ function Home() {
   };
 
   const applyFilters = () => {
+    // Filter by Year
+    if (fromYearFilter >= toYearFilter) {
+      alert("Alert! FROM year must less than TO Year");
+      return;
+    }
+
+    const filteredByYear = prizesList.filter((item) => {
+      if (item.year >= fromYearFilter && item.year < toYearFilter) return true;
+      else return false;
+    });
+    // console.log(filteredByYear);
+    setFilteredList(filteredByYear);
+
+    //  Filter by category
     const categoryFilter = selectedCategories.map(
       (item) => item.name.charAt(0).toLowerCase() + item.name.slice(1)
     );
 
-    if (categoryFilter.length == 0) setFilteredList(prizesList);
-    else
-      setFilteredList(
-        prizesList.filter((item) => categoryFilter.includes(item.category))
+    if (categoryFilter.length == 0) setFilteredList(filteredByYear);
+    else {
+      const filteredByCategory = filteredByYear.filter((item) =>
+        categoryFilter.includes(item.category)
       );
+      setFilteredList(filteredByCategory);
+    }
   };
 
-  return (
-    <div className="container">
-      <p>List of Nobel Laureates:</p>
-      <div className="filters">
+  const clearFilters = () => {
+    setFromYearFilter("1900");
+    setToYearFilter("2022");
+    setSelectedCategories([]);
+    setFilteredList(prizesList);
+  };
+
+  const CategoryFilter = () => {
+    return (
+      <div style={{ width: "50%" }}>
+        <p className="filtersTitle">Category</p>
         <Multiselect
           className="categoryDropdown"
           showCheckbox
@@ -75,10 +102,76 @@ function Home() {
           }
           // customCloseIcon={"s"}
         />
-
-        <button onClick={applyFilters}>Apply</button>
       </div>
-      <PriceList filteredList={filteredList} activeFilters={activeFilters} />
+    );
+  };
+
+  const YearFilter = () => {
+    let options = [];
+
+    for (let i = 1900; i <= 2022; i++) {
+      options.push(i);
+    }
+
+    return (
+      <div>
+        <p className="filtersTitle">Year</p>
+        <div className="year-filter-container">
+          <p style={{ color: "#ffa008", alignSelf: "center" }}>From</p>
+          <select
+            ref={fromYearRef}
+            className="year-filter-dropdown"
+            name="from_year"
+            id="from_year"
+            value={fromYearFilter}
+            onChange={() => setFromYearFilter(fromYearRef.current.value)}
+          >
+            {options.map((year) => (
+              <option key={year} value={year}>
+                {year}
+              </option>
+            ))}
+          </select>
+          <p style={{ color: "#ffa008", alignSelf: "center" }}>To</p>
+          <select
+            ref={toYearRef}
+            value={toYearFilter}
+            className="year-filter-dropdown"
+            name="to_year"
+            id="to_year"
+            onChange={() => setToYearFilter(toYearRef.current.value)}
+          >
+            {options.map((year) => (
+              <option key={year} value={year}>
+                {year}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+    );
+  };
+
+  return (
+    <div className="container">
+      <p className="heading">List of Nobel Laureates</p>
+
+      <div className="filters">
+        <div style={{ display: "flex", flexDirection: "row" }}>
+          <CategoryFilter />
+          <YearFilter />
+        </div>
+
+        <div className="btnContainer">
+          <button className="clearBtn" onClick={clearFilters}>
+            Clear All
+          </button>
+          <button className="applyBtn" onClick={applyFilters}>
+            Apply
+          </button>
+        </div>
+      </div>
+      <PriceList filteredList={filteredList} />
     </div>
   );
 }

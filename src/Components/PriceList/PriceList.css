@@ -2,23 +2,27 @@
   /* margin: 20px 50px;
   flex: 1;
   overflow-y: scroll;
-  max-height: 500px;
-  background-color: antiquewhite; */
+  max-height: 500px; 
+  background-color: antiquewhite;*/
+  background-color: #061a8e;
+  margin: 2vh 3vw;
+  border-radius: 8px;
 }
 
 .listHeader {
   display: flex;
   flex-direction: row;
   padding: 10px;
+  color: #ffa008;
+  font-weight: 700;
 }
 
 .listBody {
-  margin: 0px 3vw;
-  /* color: red; */
+  /* margin: 0px 3vw; */
   flex: 1;
   overflow-y: scroll;
-  max-height: 450px;
-  background-color: antiquewhite;
+  max-height: 50vh;
+  background-color: #061a8e;
 }
 
 .listItem {
